@@ -1,0 +1,20 @@
+require:
+  - rubocop-packaging
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  DisabledByDefault: true
+  TargetRubyVersion: 3.0
+
+  Exclude:
+    - tmp/
+    - vendor/
+  
+Layout/IndentationStyle:
+  Enabled: true
+  EnforcedStyle: tabs
+
+Rails/FilePath:
+  Enabled: true
+  EnforcedStyle: slashes
