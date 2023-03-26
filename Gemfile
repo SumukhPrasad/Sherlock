@@ -41,6 +41,9 @@ gem 'rubocop-rails'
 gem 'rubocop-rspec'
 gem 'rubocop-packaging'
 
+# Users and Authentication
+gem "devise"
+
 #-------------------------------------
 
 
