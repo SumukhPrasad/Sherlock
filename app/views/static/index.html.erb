@@ -2,9 +2,10 @@
 	<div class="hero-logo">
 		<%= image_tag("logo.svg", width: 400) %>
 	</div>
+	<div class="separator"></div>
 	<% if user_signed_in? %>
-		<p>Logged in as <strong><%= current_user.email %></strong>.
-		<%= link_to "Edit profile", edit_user_registration_path %> |
+		<p>Logged in as <strong><%= current_user.name %> (<%= current_user.email %>)</strong>.</p>
+		<p><%= link_to "Edit profile", edit_user_registration_path %>
 		<%= link_to "Logout", destroy_user_session_path %></p>
 	<% else %>
 		<%= link_to "Sign In", new_user_session_path, class: "link-button block-button"  %>

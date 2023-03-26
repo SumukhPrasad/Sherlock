@@ -88,4 +88,6 @@ Rails.application.configure do
 		authentication: :plain,
 		enable_starttls_auto: true
 	}
+
+	config.hosts << "sumukhs-macbook-air.local"
 end
