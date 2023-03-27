@@ -1,0 +1,44 @@
+@import "colors"
+
+.standard-table
+     border-collapse: collapse
+
+     th
+          background-color: #ccc
+          border-left: #aaa solid 1px
+          border-right: #aaa solid 1px
+          border-bottom: #111 solid 1px
+          margin: 0
+          padding: 5px
+          border-collapse: collapse
+          text-align: left
+
+     td
+          border-left: #aaa solid 1px
+          border-right: #aaa solid 1px
+          border-bottom: #aaa solid 1px
+          margin: 0
+          padding: 5px
+          border-collapse: collapse
+
+     tr
+          &:nth-child(even)
+               background: white
+          &:nth-child(odd)
+               background: $color-gray97
+
+.open-table
+     border-collapse: collapse
+
+     th
+          border-bottom: #111 solid 1px
+          margin: 0
+          padding: 5px
+          border-collapse: collapse
+          text-align: left
+
+     td
+          border-bottom: #000 dashed 1px
+          margin: 0
+          padding: 5px
+          border-collapse: collapse

@@ -1,0 +1,26 @@
+<%= form_with model: @section do |form| %>
+     <div class="field">
+          <%= form.label :sectioncode, 'Section code' %><br />
+          <% @section.errors.full_messages_for(:sectioncode).each do |message| %>
+               <div><b><%= message %></b></div>
+          <% end %>
+          <%= form.number_field :sectioncode %>
+     </div>
+     <div class="field">
+          <%= form.label :name %><br />
+          <% @section.errors.full_messages_for(:name).each do |message| %>
+               <div><b><%= message %></b></div>
+          <% end %>
+          <%= form.text_field :name %>
+     </div>
+     <div class="field">
+          <%= form.label :description %><br />
+          <% @section.errors.full_messages_for(:description).each do |message| %>
+               <div><b><%= message %></b></div>
+          <% end %>
+          <%= form.text_area :description %>
+     </div>
+     <div class="actions">
+          <%= form.submit %>
+     </div>
+<% end %>

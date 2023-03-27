@@ -46,4 +46,4 @@
 <h2 class="destructive">Delete my account</h2>
 <p>If you no longer need your account, you can choose to delete it. All your data will be permanently lost and cannot be recovered if you wish to do so in the future.</p>
 
-<%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure you want to delete your account?\n\n This action is not reversible.", turbo_confirm: "Are you sure you want to delete your account?\n\n This action is not reversible." }, method: :delete, class: "destructive-background" %>
+<%= button_to "I understand the consequences, delete my account", registration_path(resource_name), data: { confirm: "Are you sure you want to delete your account?\n\n This action is irreversible.", turbo_confirm: "Are you sure you want to delete your account?\n\n This action is irreversible." }, method: :delete, class: "destructive-background" %>

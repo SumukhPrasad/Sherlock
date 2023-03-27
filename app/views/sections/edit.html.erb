@@ -1,0 +1,5 @@
+<%= link_to '< Go back to "'+@section.name+'"', section_path(@section.sectioncode) %>
+
+<h1>Edit <i>"<%= @section.name %>"</i></h1>
+
+<%= render "form", section: @section %>

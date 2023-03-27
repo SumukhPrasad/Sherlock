@@ -1,0 +1,24 @@
+<h1>Sections</h1>
+
+<p>Use sections to group storage spaces that are physically close to each other.</p>
+
+<h2>Assigned Sections</h2>
+<% if @sections.empty? %>
+<p>You have not created any sections yet. </p>
+<% else %>
+<table class="standard-table">
+<tr>
+    <th>Code</th>
+    <th>Name</th> 
+    <th>Description</th>
+</tr>
+<% @sections.each do |section| %>
+     <tr>
+          <td><%= section.sectioncode %></td>
+          <td><%= link_to section.name, section_path(section.sectioncode) %></td> 
+          <td><%= section.description %></td>
+     </tr>
+<% end %>
+</table>
+<% end %>
+<i><%= link_to "Create a new section", new_section_path %></i>
