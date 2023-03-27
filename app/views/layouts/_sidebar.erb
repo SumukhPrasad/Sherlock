@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+
+<nav>
+     <div class="navigation-header centered-content">
+          <a href="/" class="navigation-link"><%= image_tag("logo-white.svg", width: 200) %></a>
+     </div>
+
+     <div class="navigation-content">
+          <div class="navigation-category">
+               <div class="navigation-category-title navigation-object">Account</div>
+               <%= link_to "Edit profile", edit_user_registration_path, class: "navigation-link navigation-object" %>
+               <%= link_to "Logout", destroy_user_session_path, class: "navigation-link navigation-object" %>
+          </div>
+     </div>
+
+</nav>
+
+<% end %>

@@ -6,6 +6,7 @@
 	<!--
 	
 	Hello there, explorer!
+	Visit https://github.com/SumukhPrasad/Sherlock to see the source code.
 
 	 -->
 
@@ -18,13 +19,23 @@
 	</head>
 
 	<body>
-	<% if notice %>
-		<p class="alert alert-success"><%= notice %></p>
+
+	<% if user_signed_in? %>
+	<%= render :partial => "layouts/sidebar" %>
+	<main>
 	<% end %>
-	<% if alert %>
-		<p class="alert alert-danger"><%= alert %></p>
+
+		<% if notice %>
+			<p class="alert alert-success"><%= notice %></p>
+		<% end %>
+		<% if alert %>
+			<p class="alert alert-danger"><%= alert %></p>
+		<% end %>
+		<%= yield %>
+
+	<% if user_signed_in? %>	
+	</main>
 	<% end %>
-	
-	<%= yield %>
+
 	</body>
 </html>

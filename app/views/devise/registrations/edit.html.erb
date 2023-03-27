@@ -1,4 +1,6 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1>Profile & Account Information</h1>
+
+<h2>Edit profile</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -41,8 +43,7 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h2 class="destructive">Delete my account</h2>
+<p>If you no longer need your account, you can choose to delete it. All your data will be permanently lost and cannot be recovered if you wish to do so in the future.</p>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+<%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure you want to delete your account?\n\n This action is not reversible.", turbo_confirm: "Are you sure you want to delete your account?\n\n This action is not reversible." }, method: :delete, class: "destructive-background" %>

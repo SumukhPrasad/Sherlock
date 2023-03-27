@@ -1,14 +1,12 @@
-<div class="page-centered front-page centered-content">
-	<div class="hero-logo">
-		<%= image_tag("logo.svg", width: 400) %>
-	</div>
-	<div class="separator"></div>
-	<% if user_signed_in? %>
-		<p>Logged in as <strong><%= current_user.name %> (<%= current_user.email %>)</strong>.</p>
-		<p><%= link_to "Edit profile", edit_user_registration_path %>
-		<%= link_to "Logout", destroy_user_session_path %></p>
-	<% else %>
+<% if user_signed_in? %>
+	<p>Logged in as <strong><%= current_user.name %> (<%= current_user.email %>)</strong>.</p>
+<% else %>
+	<div class="page-centered front-page centered-content">
+		<div class="hero-logo">
+			<%= image_tag("logo.svg", width: 400) %>
+		</div>
+		<div class="separator"  />
 		<%= link_to "Sign In", new_user_session_path, class: "link-button block-button"  %>
 		<p>New user? <%= link_to "Sign Up", new_user_registration_path %></p>
-	<% end %>
-</div>
+	</div>
+<% end %>
