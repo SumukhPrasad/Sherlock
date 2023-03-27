@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-	<p>Logged in as <strong><%= current_user.name %> (<%= current_user.email %>)</strong>.</p>
+	<%= render "indexpage" %>
 <% else %>
 	<div class="page-centered front-page centered-content">
 		<div class="hero-logo">
