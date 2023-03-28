@@ -2,11 +2,12 @@
 
 <h1><%= @section.name %></h1>
 
+<%= render "label", section: @section %>
+
 <table class="open-table">
 <tr>
      <th>Parameter</th><th>Value</th>
 </tr>
-
 <tr><td><i>Section Code</i></td><td><%= @section.sectioncode %></td></tr>
 <tr><td><i>Name</i></td><td><%= @section.name %></td></tr>
 <tr><td><i>Description</i></td><td><%= @section.description %></td></tr>
@@ -15,6 +16,7 @@
 
 </table>
 <i><%= link_to "Edit", edit_section_path %></i>
+
 
 <h2 class="destructive">Delete this section</h2>
 <p>If you no longer use this section, you can choose to delete it. This action is irreversible.</p>

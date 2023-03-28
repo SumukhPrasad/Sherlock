@@ -44,6 +44,12 @@ gem 'rubocop-packaging'
 # Users and Authentication
 gem "devise"
 
+# Data
+gem 'barby'
+gem 'has_barcode'
+gem 'rqrcode'
+gem 'base64'
+
 #-------------------------------------
 
 
