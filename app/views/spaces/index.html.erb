@@ -1,0 +1,25 @@
+<%= link_to '< Go back to "'+@section.name+'"', section_path(@section.sectioncode) %>
+
+<h1>Spaces under <i>"<%= @section.name %>"</i></h1>
+
+<h2>Assigned Spaces</h2>
+
+<% if @spaces.empty? %>
+<p>You have not created any spaces under <i>"<%= @section.name %>" yet. </p>
+<% else %>
+<table class="standard-table">
+<tr>
+    <th>Code</th>
+    <th>Name</th> 
+    <th>Description</th>
+</tr>
+<% @spaces.each do |space| %>
+     <tr>
+          <td><%= space.spacecode %></td>
+          <td><%= link_to space.name, section_space_path(space.sectioncode_id, space.spacecode) %></td> 
+          <td><%= space.description %></td>
+     </tr>
+<% end %>
+</table>
+<% end %>
+<i><%= link_to "Create a new space", new_section_space_path %></i>

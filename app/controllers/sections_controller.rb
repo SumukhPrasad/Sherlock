@@ -13,7 +13,7 @@ class SectionsController < ApplicationController
 	
 	def create
 		@section = Section.new(section_params)
-	
+
 		if @section.save
 			redirect_to section_path(@section.sectioncode)
 		else
@@ -23,15 +23,18 @@ class SectionsController < ApplicationController
 
 	def edit
 		@section = Section.find_by!(:sectioncode => params[:sectioncode])
+		@backpath = section_path(@section.sectioncode)
+		@name = @section.name
 	end
 	
 	def update
 		@section = Section.find_by!(:sectioncode => params[:sectioncode])
-	
+		@backpath = section_path(@section.sectioncode)
+		@name = @section.name
 		if @section.update(section_params)
 			redirect_to section_path(@section.sectioncode)
 		else
-			render :new, status: :unprocessable_entity
+			render :edit, status: :unprocessable_entity
 		end
 	end
 

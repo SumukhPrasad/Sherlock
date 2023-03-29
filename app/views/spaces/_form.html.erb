@@ -1,0 +1,26 @@
+<%= form_with(model: @space, url: [@section, @space]) do |form| %>
+     <div class="field">
+          <%= form.label :spacecode, 'Space code' %><br />
+          <% @space.errors.full_messages_for(:spacecode).each do |message| %>
+               <div class="destructive"><b><%= message %></b></div>
+          <% end %>
+          <%= form.number_field :spacecode %>
+     </div>
+     <div class="field">
+          <%= form.label :name %><br />
+          <% @space.errors.full_messages_for(:name).each do |message| %>
+               <div class="destructive"><b><%= message %></b></div>
+          <% end %>
+          <%= form.text_field :name %>
+     </div>
+     <div class="field">
+          <%= form.label :description %><br />
+          <% @space.errors.full_messages_for(:description).each do |message| %>
+               <div class="destructive"><b><%= message %></b></div>
+          <% end %>
+          <%= form.text_area :description %>
+     </div>
+     <div class="actions">
+          <%= form.submit %>
+     </div>
+<% end %>

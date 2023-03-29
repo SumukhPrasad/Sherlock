@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
 	resources :sections, param: :sectioncode do
 		get "/sections", to: "sections#index"
-		get "/sections/:sectioncode", to: "sections#show"
+		resources :spaces, param: :spacecode
 	end
+
 	# Defines the root path route ("/")
 	root :controller => 'static', :action => :index
 end
