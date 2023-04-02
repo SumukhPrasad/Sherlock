@@ -21,4 +21,4 @@
 <h2 class="destructive">Delete this space</h2>
 <p>If you no longer use this space, you can choose to delete it. All inventory items associated with this space will be destroyed. This action is irreversible.</p>
 
-<%#= button_to "I understand the consequences, delete this space", space_path(@space.spacecode), data: { turbo_confirm: "Are you sure you want to delete this space?\n\n This action is irreversible." }, method: :delete, class: "destructive-background" %>
+<%= button_to "I understand the consequences, delete this space", section_space_path, data: { turbo_confirm: "Are you sure you want to delete this space?\n\n This action is irreversible." }, method: :delete, class: "destructive-background" %>
