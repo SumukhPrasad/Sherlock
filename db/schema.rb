@@ -28,7 +28,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_135415) do
 		t.datetime "created_at", null: false
 		t.datetime "updated_at", null: false
 		t.index ["sectioncode_id", "spacecode"], name: "index_spaces_on_sectioncode_id_and_spacecode", unique: true
-		t.index ["sectioncode_id"], name: "index_spaces_on_sectioncode_id"
 	end
 
 	create_table "users", force: :cascade do |t|
@@ -53,5 +52,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_135415) do
 		t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
 	end
 
-	add_foreign_key "spaces", "sections", column: "sectioncode_id"
+	add_foreign_key "spaces", "sections", column: "sectioncode_id", primary_key: "sectioncode"
 end

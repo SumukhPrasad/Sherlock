@@ -4,10 +4,10 @@ class CreateSpaces < ActiveRecord::Migration[7.0]
 			t.integer :spacecode
 			t.string :name
 			t.text :description
-			t.references :sectioncode, foreign_key: {to_table: :sections}
+			t.integer :sectioncode_id
 			t.timestamps
 		end
-
+		add_foreign_key :spaces, :sections, column: :sectioncode_id, primary_key: :sectioncode
 		add_index :spaces, [:sectioncode_id, :spacecode], unique: true
 	end
 	def self.down

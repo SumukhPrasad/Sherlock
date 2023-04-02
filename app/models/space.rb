@@ -11,7 +11,7 @@ class Space < ApplicationRecord
 		:type => :qr_code,
 		:value => Proc.new { |s| "SHERLOCK;SECTIONCODE:#{s.sectioncode_id.to_s.rjust(4, '0')};SPACECODE:#{s.spacecode.to_s.rjust(4, '0')};;RESTOREDATA;NAME:#{(s.name + '*' * 50)[0,50]};DESCRIPTION:#{(s.description + '*' * 100)[0,100]};;" }
 
-		belongs_to :section, foreign_key: :sectioncode_id, primary_key: :sectioncode, required: true
+	belongs_to :section, foreign_key: :sectioncode_id, primary_key: :sectioncode, required: true
 
 	def to_param
 		spacecode
