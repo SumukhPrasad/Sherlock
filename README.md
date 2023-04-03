@@ -1,9 +1,11 @@
+![Sherlock Logo](app/assets/images/logo.svg "Sherlock")
+
 # Sherlock
 
 Inventories and sorting for the rest of us. Seriously.
 
 ## What is this?
-An intuitive (hopefully) inventory application built with Ruby on Rails.
+An intuitive (hopefully) inventory application built with Ruby on Rails.  Items are put into spaces (drawers, cupboards, etc.), which are then organised into sections. Sherlock auto-generates labels with QR codes/barcodes for all of them.
 
 ![Screenshot of Sherlock on Safari](readmeassets/screenshot.png "Sherlock")
 
