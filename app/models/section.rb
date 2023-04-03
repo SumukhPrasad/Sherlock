@@ -12,7 +12,7 @@ class Section < ApplicationRecord
 		:value => Proc.new { |s| "SHERLOCK;SECTIONCODE:#{s.sectioncode.to_s.rjust(4, '0')};;RESTOREDATA;NAME:#{(s.name + '*' * 50)[0,50]};DESCRIPTION:#{(s.description + '*' * 100)[0,100]};;" }
 
 	has_many :spaces, foreign_key: :sectioncode_id, primary_key: :sectioncode, dependent: :destroy
-	
+	has_many :items, through: :spaces, foreign_key: :sectioncode_id, primary_key: :sectioncode, dependent: :destroy
 	def to_param
 		sectioncode
 	end

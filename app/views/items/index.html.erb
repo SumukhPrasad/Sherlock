@@ -1,0 +1,26 @@
+<%= link_to '< Go back to "'+@space.name+'"', section_space_path(:spacecode => @space.spacecode) %>
+
+<h1>Items</h1>
+<h2>Assigned Items</h2>
+
+<% if @items.empty? %>
+<p>You have not created any spaces under <i>"<%= @section.name %>" yet. </p>
+<% else %>
+<table class="standard-table">
+<tr>
+    <th>Code</th>
+    <th>Name</th> 
+    <th>Description</th>
+    <th>Quantity</th>
+</tr>
+<% @items.each do |item| %>
+     <tr>
+          <td><%= item.itemcode %></td>
+          <td><%= link_to item.name, section_space_item_path(:itemcode=>item.itemcode) %></td> 
+          <td><%= item.description %></td>
+          <td><%= item.quantity %></td>
+     </tr>
+<% end %>
+</table>
+<% end %>
+<i><%= link_to "Add an item", new_section_space_item_path %></i>

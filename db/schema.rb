@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_28_135415) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_02_052622) do
+	create_table "items", force: :cascade do |t|
+		t.integer "itemcode"
+		t.string "name"
+		t.text "description"
+		t.integer "quantity"
+		t.integer "sectioncode_id"
+		t.integer "spacecode_actual_id"
+		t.datetime "created_at", null: false
+		t.datetime "updated_at", null: false
+		t.index ["spacecode_actual_id", "itemcode"], name: "index_items_on_spacecode_actual_id_and_itemcode", unique: true
+	end
+
 	create_table "sections", force: :cascade do |t|
 		t.integer "sectioncode"
 		t.string "name"
@@ -52,5 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_135415) do
 		t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
 	end
 
+	add_foreign_key "items", "spaces", column: "spacecode_actual_id"
 	add_foreign_key "spaces", "sections", column: "sectioncode_id", primary_key: "sectioncode"
 end

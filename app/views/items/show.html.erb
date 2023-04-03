@@ -1,0 +1,25 @@
+<%= link_to '< See all items', section_space_items_path %>
+
+<h1><%= @item.name %></h1>
+
+<%= render "label", item: @item %>
+<%= render "labelsmall", item: @item %>
+
+<table class="open-table">
+<tr>
+     <th>Parameter</th><th>Value</th>
+</tr>
+<tr><td><i>Item Code</i></td><td><%= @item.itemcode %></td></tr>
+<tr><td><i>Name</i></td><td><%= @item.name %></td></tr>
+<tr><td><i>Description</i></td><td><%= @item.description %></td></tr>
+<tr><td><i>Quantity</i></td><td><%= @item.quantity %></td></tr>
+<tr><td><i>Created at</i></td><td><%= @item.created_at %></td></tr>
+<tr><td><i>Last updated at</i></td><td><%= @item.updated_at %></td></tr>
+
+</table>
+<i><%= link_to "Edit", edit_section_space_item_path %></i>
+
+
+<h2 class="destructive">Delete this Item</h2>
+<p>This action is irreversible.</p>
+<%= button_to "I understand the consequences, delete this item", section_space_item_path, data: { turbo_confirm: "Are you sure you want to delete this space?\n\n This action is irreversible." }, method: :delete, class: "destructive-background" %>

@@ -1,0 +1,33 @@
+<%= form_with(model: @item, url: [@section, @space, @item]) do |form| %>
+     <div class="field">
+          <%= form.label :itemcode, 'Item code' %><br />
+          <% @item.errors.full_messages_for(:itemcode).each do |message| %>
+               <div class="destructive"><b><%= message %></b></div>
+          <% end %>
+          <%= form.number_field :itemcode %>
+     </div>
+     <div class="field">
+          <%= form.label :name %><br />
+          <% @item.errors.full_messages_for(:name).each do |message| %>
+               <div class="destructive"><b><%= message %></b></div>
+          <% end %>
+          <%= form.text_field :name %>
+     </div>
+     <div class="field">
+          <%= form.label :description %><br />
+          <% @item.errors.full_messages_for(:description).each do |message| %>
+               <div class="destructive"><b><%= message %></b></div>
+          <% end %>
+          <%= form.text_area :description %>
+     </div>
+     <div class="field">
+          <%= form.label :quantity %><br />
+          <% @item.errors.full_messages_for(:quantity).each do |message| %>
+               <div class="destructive"><b><%= message %></b></div>
+          <% end %>
+          <%= form.number_field :quantity %>
+     </div>
+     <div class="actions">
+          <%= form.submit %>
+     </div>
+<% end %>

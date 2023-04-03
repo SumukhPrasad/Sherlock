@@ -15,7 +15,7 @@
 <tr><td><i>Last updated at</i></td><td><%= @space.updated_at %></td></tr>
 
 </table>
-<i><%= link_to "Edit", edit_section_space_path %></i> | <i><%= link_to "View Spaces >", section_spaces_path %></i>
+<i><%= link_to "Edit", edit_section_space_path %></i> | <i><%= link_to "View Items >", section_space_items_path(:space_spacecode => @space.spacecode) %></i>
 
 
 <h2 class="destructive">Delete this space</h2>

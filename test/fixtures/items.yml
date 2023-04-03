@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sectioncode: 1
+  spacecode: 1
+  name: MyString
+  description: MyText
+
+two:
+  sectioncode: 1
+  spacecode: 1
+  name: MyString
+  description: MyText

@@ -1,0 +1,5 @@
+<%= link_to '< Go back to "'+@name+'"', @backpath %>
+
+<h1>Edit <i>"<%= @name %>"</i></h1>
+
+<%= render "form", section: @section, space: @space, item: @item %>
