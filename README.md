@@ -2,6 +2,11 @@
 
 Inventories and sorting for the rest of us. Seriously.
 
+## What is this?
+An intuitive (hopefully) inventory application built with Ruby on Rails.
+
+![Screenshot of Sherlock on Safari](readmeassets/screenshot.png "Sherlock")
+
 ## Getting Started
 - Downloading
     - Clone this repository with git clone: `git clone https://github.com/SumukhPrasad/Sherlock.git`
