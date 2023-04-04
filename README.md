@@ -16,7 +16,7 @@ An intuitive (hopefully) inventory application built with Ruby on Rails.  Items 
 - Setting Up
     - Set up and install dependencies: `bundle install`
     - Set your email address and password for Devise's mailer:
-        - `EDITOR=vim rails credentials:edit`
+        - `EDITOR=vim rails credentials:edit` (To see which credentials map to which parameters, see [this file](config/environments/development.rb))
         - Then, copy and fill in the contents of `credentials.yml-template`
     - Migrate the database using `rails db:migrate`
     - Run `rails server` to start up.
