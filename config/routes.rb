@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 		end
 	end
 
+	get "/print", to: "print#index"
+
 	# Defines the root path route ("/")
 	root :controller => 'static', :action => :index
 end
