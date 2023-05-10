@@ -1,2 +1,22 @@
 <h1>Print</h1>
 
+<% if @queue.print_queue_items.empty? %>
+     <p>No items in print queue. </p>
+<% else %>
+     <table class="standard-table">
+          <tr>
+               <th>Item</th>
+               <th>Name</th>
+               <th>Quantity</th>
+               <th>Delete</th>
+          </tr>
+          <% @queue.print_queue_items.each do |item| %>
+               <tr>
+                    <td><%= item.print_content.html_safe %></td>
+                    <td><b><%= item.name %></b></td>
+                    <td><b>+</b><%= item.quantity %><b>-</b></td>
+                    <td>❌</td>
+               </tr>
+          <% end %>
+     </table>
+<% end %>

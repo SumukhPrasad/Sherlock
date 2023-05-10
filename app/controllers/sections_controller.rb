@@ -26,6 +26,33 @@ class SectionsController < ApplicationController
 		@backpath = section_path(@section.sectioncode)
 		@name = @section.name
 	end
+
+	def add_to_queue
+		# @current_queue
+		@section = Section.find_by!(:sectioncode => params[:sectioncode])
+
+		# TODO USE HASHES!
+
+		if @current_queue.print_queue_items.find_by(:name => "Section Label for #{@section.name}") != nil
+			printItem = @current_queue.print_queue_items.find_by(:name => "Section Label for #{@section.name}")
+			printItem.quantity += 1
+			printItem.print_content = render("_label", locals: { section: @section }, :layout => false)
+			printItem.save!
+		else
+			printItem = @current_queue.print_queue_items.new(:name => "Section Label for #{@section.name}", :quantity => 1, :print_content => render("_label", locals: { section: @section }, :layout => false))
+			printItem.save!
+		end
+
+		
+
+		respond_to do |format|
+			# Handle a Successful Unfollow
+			format.html
+			format.js
+		end
+	end
+
+	helper_method :add_to_queue
 	
 	def update
 		@section = Section.find_by!(:sectioncode => params[:sectioncode])

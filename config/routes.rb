@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
 	resources :sections, param: :sectioncode do
 		get "/sections", to: "sections#index"
+		member do
+			post :add_to_queue
+		end
 		resources :spaces, param: :spacecode do
 			resources :items, param: :itemcode
 		end

@@ -17,6 +17,7 @@
 </table>
 <i><%= link_to "Edit", edit_section_path %></i> | <i><%= link_to "View Spaces >", section_spaces_path(@section.sectioncode) %></i>
 
+<%= button_to "Add to print queue", add_to_queue_section_path(@section.sectioncode) %>
 
 <h2 class="destructive">Delete this section</h2>
 <p>If you no longer use this section, you can choose to delete it. All spaces associated with this section will be destroyed. This action is irreversible.</p>

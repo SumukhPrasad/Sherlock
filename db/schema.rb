@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_05_232501) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_07_131317) do
   create_table "items", force: :cascade do |t|
     t.integer "itemcode"
     t.string "name"
@@ -23,25 +23,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_232501) do
     t.index ["spacecode_actual_id", "itemcode"], name: "index_items_on_spacecode_actual_id_and_itemcode", unique: true
   end
 
-  create_table "print_orders", force: :cascade do |t|
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "print_queue_items", force: :cascade do |t|
+    t.string "name"
     t.integer "quantity"
-    t.string "label"
-    t.integer "queue_id"
-    t.integer "print_order_id"
-    t.string "description"
+    t.string "print_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "print_queue_id"
   end
 
   create_table "print_queues", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "sections", force: :cascade do |t|
