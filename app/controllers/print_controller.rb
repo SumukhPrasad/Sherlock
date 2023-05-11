@@ -6,7 +6,9 @@ class PrintController < ApplicationController
 	end
 
 	def change_quantity
-		puts "+1"
+		@queue = @current_queue
+		puts params[:id], params[:quantity]
+		
 		respond_to do |format|
 			# Handle a Successful Unfollow
 			format.html
