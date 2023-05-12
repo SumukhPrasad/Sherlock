@@ -46,7 +46,6 @@ class SectionsController < ApplicationController
 		
 
 		respond_to do |format|
-			# Handle a Successful Unfollow
 			format.html
 			format.js
 		end

@@ -10,7 +10,6 @@ class PrintController < ApplicationController
 		puts params[:id], params[:quantity]
 		
 		respond_to do |format|
-			# Handle a Successful Unfollow
 			format.html
 			format.js
 		end
