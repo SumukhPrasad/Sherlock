@@ -8,7 +8,12 @@ Rails.application.routes.draw do
 			post :add_to_queue
 		end
 		resources :spaces, param: :spacecode do
-			resources :items, param: :itemcode
+			member do
+				post :add_to_queue
+			end
+			resources :items, param: :itemcode do
+
+			end
 		end
 	end
 

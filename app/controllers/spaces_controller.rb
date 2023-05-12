@@ -5,6 +5,7 @@ class SpacesController < ApplicationController
 		@spaces = Space.where(:sectioncode_id => params[:section_sectioncode])
 	end
 	def show
+		@section = Section.find_by!(:sectioncode => params[:section_sectioncode])
 		@space = Space.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode => params[:spacecode])
 	end
 
@@ -42,6 +43,32 @@ class SpacesController < ApplicationController
 			render :edit, status: :unprocessable_entity
 		end
 	end
+
+	def add_to_queue
+		@space = Space.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode => params[:spacecode])
+		@section = Section.find_by!(:sectioncode => params[:section_sectioncode])
+		# TODO USE HASHES!
+
+		if @current_queue.print_queue_items.find_by(:name => "Space Label for #{@space.name} of section #{@section.name}") != nil
+			printItem = @current_queue.print_queue_items.find_by(:name => "Space Label for #{@space.name} of section #{@section.name}")
+			printItem.quantity += 1
+			printItem.print_content = render("_label", locals: { space: @space }, :layout => false)
+			printItem.save!
+		else
+			printItem = @current_queue.print_queue_items.new(:name => "Space Label for #{@space.name} of section #{@section.name}", :quantity => 1, :print_content => render("_label", locals: { space: @space }, :layout => false))
+			printItem.save!
+		end
+
+		
+
+		respond_to do |format|
+			# Handle a Successful Unfollow
+			format.html
+			format.js
+		end
+	end
+
+	helper_method :add_to_queue
 
 	def destroy
 		@space = Space.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode => params[:spacecode])

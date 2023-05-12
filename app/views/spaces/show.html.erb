@@ -17,6 +17,7 @@
 </table>
 <i><%= link_to "Edit", edit_section_space_path %></i> | <i><%= link_to "View Items >", section_space_items_path(:space_spacecode => @space.spacecode) %></i>
 
+<%= button_to "Add to print queue", add_to_queue_section_space_path(@section.sectioncode, @space.spacecode) %>
 
 <h2 class="destructive">Delete this space</h2>
 <p>If you no longer use this space, you can choose to delete it. All inventory items associated with this space will be destroyed. This action is irreversible.</p>
