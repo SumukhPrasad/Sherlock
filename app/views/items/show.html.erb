@@ -20,6 +20,10 @@
 <i><%= link_to "Edit", edit_section_space_item_path %></i>
 
 
+<%= button_to "Add small label to print queue", section_space_item_add_small_to_queue_path(@section.sectioncode, @space.spacecode, @item.itemcode) %>
+
+<%= button_to "Add large label to print queue", section_space_item_add_large_to_queue_path(@section.sectioncode, @space.spacecode, @item.itemcode) %>
+
 <h2 class="destructive">Delete this Item</h2>
 <p>This action is irreversible.</p>
 <%= button_to "I understand the consequences, delete this item", section_space_item_path, data: { turbo_confirm: "Are you sure you want to delete this space?\n\n This action is irreversible." }, method: :delete, class: "destructive-background" %>

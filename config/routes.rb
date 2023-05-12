@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 				post :add_to_queue
 			end
 			resources :items, param: :itemcode do
-
+				post :add_small_to_queue
+				post :add_large_to_queue
 			end
 		end
 	end
