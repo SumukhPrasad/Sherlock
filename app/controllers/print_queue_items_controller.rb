@@ -1,6 +1,6 @@
 class PrintQueueItemsController < ApplicationController
 	before_action :authenticate_user!
-		def change_quantity
+	def change_quantity
 		@queue = @current_queue
 
 		item = @current_queue.print_queue_items.find_by!(:id => params[:id])		

@@ -49,6 +49,7 @@ gem 'barby'
 gem 'has_barcode'
 gem 'rqrcode'
 gem 'base64'
+gem "digest"
 
 #-------------------------------------
 

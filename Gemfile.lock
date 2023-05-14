@@ -98,6 +98,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    digest (3.1.1)
     erubi (1.12.0)
     ffi (1.15.5)
     globalid (1.1.0)
@@ -282,6 +283,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  digest
   has_barcode
   importmap-rails
   jbuilder

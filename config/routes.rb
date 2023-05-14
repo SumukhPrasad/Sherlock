@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 	end
 
 	get "/print", to: "print#index"
+	get 'print_shop', to: "print_shop#index" 
 
 	resources :print_queue_items, only: [] do
 		member do
