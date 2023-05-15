@@ -4,10 +4,19 @@
 
 Inventories and sorting for the rest of us. Seriously.
 
+![Screenshot of Sherlock](readmeassets/screenshot.png "Sherlock")
+
+
 ## What is this?
 An intuitive (hopefully) inventory application built with Ruby on Rails.  Items are put into spaces (drawers, cupboards, etc.), which are then organised into sections. Sherlock auto-generates labels with QR codes/barcodes for all of them.
 
-![Screenshot of Sherlock on Safari](readmeassets/screenshot.png "Sherlock")
+![Layout](readmeassets/layout.png "Layout")
+
+## What you can do
+- Index your inventories.
+- Print out labels for sections, spaces, and items.
+- (future release) Search through your inventories.
+- (future release) Scan labels of indexed items to find out where they belong.
 
 ## Getting Started
 - Downloading
