@@ -51,6 +51,8 @@ gem 'rqrcode'
 gem 'base64'
 gem "digest"
 
+gem 'tmpdir'
+
 #-------------------------------------
 
 

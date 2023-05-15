@@ -101,6 +101,7 @@ GEM
     digest (3.1.1)
     erubi (1.12.0)
     ffi (1.15.5)
+    fileutils (1.7.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     has_barcode (0.2.3)
@@ -247,6 +248,8 @@ GEM
     thor (1.2.1)
     tilt (2.1.0)
     timeout (0.3.2)
+    tmpdir (0.1.3)
+      fileutils
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -300,6 +303,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
+  tmpdir
   turbo-rails
   tzinfo-data
   web-console

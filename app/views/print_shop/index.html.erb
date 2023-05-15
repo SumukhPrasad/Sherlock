@@ -1,4 +1,36 @@
 <h1>Sherlock PrintShop</h1>
 
-<h2>Printing Properties</h2>
+<h2>Printing</h2>
 
+<p>Open the following page and follow the given steps to get your prints:</p>
+<ul>
+     <li>Go to the print dialog by pressing Command+P (Mac) or Control+P (Windows/Linux), or by using the browser's toolbar.</li>
+     <li>Adjust the zoom until the width of the labels are correct. <i>(This is usually not a problem on most chromium-based browsers, but your mileage with Safari may vary.)</i></li>
+          <ul>
+               <li>Section/Space labels:</li>
+               <ul>
+                    <li>Height: <b>8cm</b></li>
+                    <li>Width: <b>8cm</b></li>
+               </ul>
+               <li>Item labels:</li>
+               <ul>
+                    <li>Small labels</li>
+                    <ul>
+                         <li>Height: <b>2cm</b></li>
+                         <li>Width: <b>4.5cm</b></li>
+                    </ul>
+                    <li>Large labels</li>
+                    <ul>
+                         <li>Height: <b>2cm</b></li>
+                         <li>Width: <b>10cm</b></li>
+                    </ul>
+               </ul>
+          </ul>
+     <li>Proceed to printing.</li>
+</ul>
+
+<%= link_to "Open Print Page", print_page_path, target: :_blank  %>
+
+
+<h2>Why are we relying on the browser to generate print files?</h2>
+<p>This is due to the fact that a. most browsers have reliable printing systems and b. this removes quite a lot of complexity from the codebase. When a feature is present, why not use it?</p>

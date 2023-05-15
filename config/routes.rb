@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 	end
 
 	get "/print", to: "print#index"
-	get 'print_shop', to: "print_shop#index" 
 
 	resources :print_queue_items, only: [] do
 		member do
@@ -27,6 +26,9 @@ Rails.application.routes.draw do
 			delete :delete_item
 		end
 	end
+
+	get 'print_shop', to: "print_shop#index" 
+	get 'print_page', to: "print_shop#show" 
 
 	# Defines the root path route ("/")
 	root :controller => 'static', :action => :index
