@@ -47,15 +47,15 @@ class SpacesController < ApplicationController
 	def add_to_queue
 		@space = Space.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode => params[:spacecode])
 		@section = Section.find_by!(:sectioncode => params[:section_sectioncode])
-		# TODO USE HASHES!
 
-		if @current_queue.print_queue_items.find_by(:name => "Space Label for #{@space.name} of section #{@section.name}") != nil
-			printItem = @current_queue.print_queue_items.find_by(:name => "Space Label for #{@space.name} of section #{@section.name}")
+		printString = "Space Label for #{@space.name} of section #{@section.name}"
+		if @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString)) != nil
+			printItem = @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString))
 			printItem.quantity += 1
 			printItem.print_content = render("_label", locals: { space: @space }, :layout => false)
 			printItem.save!
 		else
-			printItem = @current_queue.print_queue_items.new(:name => "Space Label for #{@space.name} of section #{@section.name}", :quantity => 1, :print_content => render("_label", locals: { space: @space }, :layout => false))
+			printItem = @current_queue.print_queue_items.new(:name => printString, :itemhash => Digest::SHA256.hexdigest(printString), :quantity => 1, :print_content => render("_label", locals: { space: @space }, :layout => false))
 			printItem.save!
 		end
 

@@ -31,15 +31,13 @@ class SectionsController < ApplicationController
 		# @current_queue
 		@section = Section.find_by!(:sectioncode => params[:sectioncode])
 
-		# TODO USE HASHES!
-
-		if @current_queue.print_queue_items.find_by(:name => "Section Label for #{@section.name}") != nil
-			printItem = @current_queue.print_queue_items.find_by(:name => "Section Label for #{@section.name}")
+		printString = "Section Label for #{@section.name}"
+		if @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString)) != nil
+			printItem = @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString))
 			printItem.quantity += 1
-			printItem.print_content = render("_label", locals: { section: @section }, :layout => false)
 			printItem.save!
 		else
-			printItem = @current_queue.print_queue_items.new(:name => "Section Label for #{@section.name}", :quantity => 1, :print_content => render("_label", locals: { section: @section }, :layout => false))
+			printItem = @current_queue.print_queue_items.new(:name => printString, :itemhash => Digest::SHA256.hexdigest(printString), :quantity => 1, :print_content => render("_label", locals: { section: @section }, :layout => false))
 			printItem.save!
 		end
 

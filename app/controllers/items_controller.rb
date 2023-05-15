@@ -42,15 +42,14 @@ class ItemsController < ApplicationController
 	def add_large_to_queue
 		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode]).spacecode, :itemcode => params[:item_itemcode])
 
-		# TODO USE HASHES!
-
-		if @current_queue.print_queue_items.find_by(:name => "Large Item Label for #{@item.name}") != nil
-			printItem = @current_queue.print_queue_items.find_by(:name => "Large Item Label for #{@item.name}")
+		printString = "Large Item Label for #{@item.name}"
+		if @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString)) != nil
+			printItem = @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString))
 			printItem.quantity += 1
 			printItem.print_content = render("_label", locals: { item: @item }, :layout => false)
 			printItem.save!
 		else
-			printItem = @current_queue.print_queue_items.new(:name => "Large Item Label for #{@item.name}", :quantity => 1, :print_content => render("_label", locals: { item: @item }, :layout => false))
+			printItem = @current_queue.print_queue_items.new(:name => printString, :itemhash => Digest::SHA256.hexdigest(printString), :quantity => 1, :print_content => render("_label", locals: { item: @item }, :layout => false))
 			printItem.save!
 		end
 
@@ -65,15 +64,14 @@ class ItemsController < ApplicationController
 		puts params
 		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode]).spacecode, :itemcode => params[:item_itemcode])
 		
-		# TODO USE HASHES!
-
-		if @current_queue.print_queue_items.find_by(:name => "Small Item Label for #{@item.name}") != nil
-			printItem = @current_queue.print_queue_items.find_by(:name => "Small Item Label for #{@item.name}")
+		printString = "Small Item Label for #{@item.name}"
+		if @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString)) != nil
+			printItem = @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString))
 			printItem.quantity += 1
 			printItem.print_content = render("_labelsmall", locals: { item: @item }, :layout => false)
 			printItem.save!
 		else
-			printItem = @current_queue.print_queue_items.new(:name => "Small Item Label for #{@item.name}", :quantity => 1, :print_content => render("_labelsmall", locals: { item: @item }, :layout => false))
+			printItem = @current_queue.print_queue_items.new(:name => printString, :itemhash => Digest::SHA256.hexdigest(printString), :quantity => 1, :print_content => render("_labelsmall", locals: { item: @item }, :layout => false))
 			printItem.save!
 		end
 
