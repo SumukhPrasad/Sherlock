@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_15_090340) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_18_231910) do
   create_table "items", force: :cascade do |t|
     t.integer "itemcode"
     t.string "name"
@@ -37,6 +37,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_090340) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "search_entries", force: :cascade do |t|
+    t.string "name"
+    t.string "searchable_type", null: false
+    t.integer "searchable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_search_entries_on_searchable"
   end
 
   create_table "sections", force: :cascade do |t|

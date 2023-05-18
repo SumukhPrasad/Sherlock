@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
 	get 'print_shop', to: "print_shop#index" 
 	get 'print_page', to: "print_shop#show" 
+	get 'search', to: "search#index" 
 
 	# Defines the root path route ("/")
 	root :controller => 'static', :action => :index
