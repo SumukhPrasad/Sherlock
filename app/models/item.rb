@@ -17,7 +17,7 @@ class Item < ApplicationRecord
 				:type => Barby::EAN13,
 				:value => Proc.new { |s| "#{s.sectioncode_id.to_s.rjust(4, '0')}#{Space.find_by(id: s.spacecode_actual_id).spacecode.to_s.rjust(4, '0')}#{s.itemcode.to_s.rjust(4, '0')}" }
 
-	belongs_to :space, foreign_key: :spacecode_actual_id, primary_key: :spacecode, required: true
+	belongs_to :space, foreign_key: :spacecode_actual_id, primary_key: :id, required: true
 
 	after_commit :create_search_entry, on: :create
 	after_commit :update_search_entry, on: :update
@@ -25,14 +25,14 @@ class Item < ApplicationRecord
 
 	private
 		def create_search_entry
-			SearchEntry.create(name: self.name, searchable: self)
+			SearchEntry.create(name: self.name, url: Rails.application.routes.url_helpers.section_space_item_path(self.sectioncode_id, Space.find_by!(:id=>self.spacecode_actual_id).spacecode, self.itemcode), searchable: self)
 		end
 
 		def update_search_entry
 			if self.search_entry.present?
-				self.search_entry.update(name: self.name)
+				self.search_entry.update(name: self.name, url: Rails.application.routes.url_helpers.section_space_item_path(self.sectioncode_id, Space.find_by!(:id=>self.spacecode_actual_id).spacecode, self.itemcode))
 			else
-				SearchEntry.create(name: self.name, searchable: self)
+				SearchEntry.create(name: self.name, url: Rails.application.routes.url_helpers.section_space_item_path(self.sectioncode_id, Space.find_by!(:id=>self.spacecode_actual_id).spacecode, self.itemcode), searchable: self)
 			end
 		end
 

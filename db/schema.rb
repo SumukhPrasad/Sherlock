@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_18_231910) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_19_023418) do
   create_table "items", force: :cascade do |t|
     t.integer "itemcode"
     t.string "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_231910) do
     t.integer "searchable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
     t.index ["searchable_type", "searchable_id"], name: "index_search_entries_on_searchable"
   end
 

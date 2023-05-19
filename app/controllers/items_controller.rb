@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
 	before_action :authenticate_user!
 	def index
-		@section = Section.find_by!(:sectioncode => params[:section_sectioncode])
-		@space = Space.find_by!(:spacecode => params[:space_spacecode])
+		@space = Space.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode => params[:space_spacecode])
 		@items = @space.items
 	end
 	def show

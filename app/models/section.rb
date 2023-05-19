@@ -24,14 +24,14 @@ class Section < ApplicationRecord
 
 	private
 		def create_search_entry
-			SearchEntry.create(name: self.name, searchable: self)
+			SearchEntry.create(name: self.name, url: Rails.application.routes.url_helpers.section_path(self.sectioncode), searchable: self)
 		end
 
 		def update_search_entry
 			if self.search_entry.present?
-				self.search_entry.update(name: self.name)
+				self.search_entry.update(name: self.name, url: Rails.application.routes.url_helpers.section_path(self.sectioncode))
 			else
-				SearchEntry.create(name: self.name, searchable: self)
+				SearchEntry.create(name: self.name, url: Rails.application.routes.url_helpers.section_path(self.sectioncode), searchable: self)
 			end
 		end
 

@@ -1,5 +1,7 @@
-
+<tr>
+<td><%= link_to search_entry.url do %>
 <h3><%= highlight search_entry.name, params[:query] %></h3>
-<p><i><%= search_entry.searchable_type %></i></p>
-<%= search_entry.searchable %>
-<hr/>
+<% end %></td>
+<td><%= search_entry.searchable_type %></td>
+<td><%= search_entry.searchable %></td>
+</tr>
