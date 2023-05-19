@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 	def show
 		@section = Section.find_by!(:sectioncode => params[:section_sectioncode])
 		@space = Space.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode => params[:space_spacecode])
-		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode]).spacecode, :itemcode=>params[:itemcode])
+		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => @space.id, :itemcode=>params[:itemcode])
 	end
 
 	def new
@@ -32,14 +32,14 @@ class ItemsController < ApplicationController
 	def edit
 		@section = Section.find_by!(:sectioncode => params[:section_sectioncode])
 		@space = Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode])
-		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode]).spacecode, :itemcode=>params[:itemcode])
+		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => @space.id, :itemcode=>params[:itemcode])
 		@backpath = section_space_item_path(@item.sectioncode_id, @space.spacecode, @item.itemcode)
 		@name = @item.name
 	end
 
 
 	def add_large_to_queue
-		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode]).spacecode, :itemcode => params[:item_itemcode])
+		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => @space.id, :itemcode => params[:item_itemcode])
 
 		printString = "Large Item Label for #{@item.name}"
 		if @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString)) != nil
@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
 
 	def add_small_to_queue
 		puts params
-		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode]).spacecode, :itemcode => params[:item_itemcode])
+		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => @space.id, :itemcode => params[:item_itemcode])
 		
 		printString = "Small Item Label for #{@item.name}"
 		if @current_queue.print_queue_items.find_by(:itemhash => Digest::SHA256.hexdigest(printString)) != nil
@@ -86,7 +86,7 @@ class ItemsController < ApplicationController
 	def update
 		@section = Section.find_by!(:sectioncode => params[:section_sectioncode])
 		@space = Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode])
-		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode]).spacecode, :itemcode=>params[:itemcode])
+		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => @space.id, :itemcode=>params[:itemcode])
 		@backpath = section_space_item_path(@item.sectioncode_id, @space.spacecode, @item.itemcode)
 		@name = @item.name
 		
@@ -98,7 +98,7 @@ class ItemsController < ApplicationController
 	end
 
 	def destroy
-		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => Space.find_by!(:spacecode=>params[:space_spacecode], :sectioncode_id => params[:section_sectioncode]).spacecode, :itemcode=>params[:itemcode])
+		@item = Item.find_by!(:sectioncode_id => params[:section_sectioncode], :spacecode_actual_id => @space.id, :itemcode=>params[:itemcode])
 		@item.destroy
 	
 		redirect_to section_space_items_path, status: :see_other
