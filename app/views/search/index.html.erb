@@ -1,15 +1,17 @@
 <h1>Search</h1>
 
+<h3>PROTOTYPE SOFTWARE</h3>
+
 <%= form_with url: :search, method: :get do |form| %>
-     <%= form.text_field :query, placeholder: "Search for something...", class: "searchbar-textfield" %>
-     <div class="searchbar-actions"><%= link_to "X", search_path, class: "searchbar-clear" %>
-     <%= form.submit "Go", class: "searchbar-go" %></div>
+     <%= form.text_field :query, placeholder: "Search for something..." %>
+     <%= link_to "X", search_path %>
+     <%= form.submit "Go" %>
 <% end %>
 
 <% if @search_entries %>
 <table class="open-table">
 <tr>
-     <th>Name</th><th>Type</th><th>Last Updated</th><th>Creaated</th>
+     <th>Name</th><th>Type</th>
 </tr>
 <%= render partial: "search/search_entry", collection: @search_entries %>
 </table>
