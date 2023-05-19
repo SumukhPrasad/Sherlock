@@ -1,18 +1,20 @@
 <h1>Search</h1>
 
-<h3>PROTOTYPE SOFTWARE</h3>
-
 <%= form_with url: :search, method: :get do |form| %>
-     <%= form.text_field :query, placeholder: "Search for something..." %>
-     <%= link_to "X", search_path %>
-     <%= form.submit "Go" %>
+     <%= form.text_field :query, placeholder: "Search for something...", class: "searchbar-textfield" %>
+     <div class="searchbar-actions"><%= link_to "X", search_path, class: "searchbar-clear" %>
+     <%= form.submit "Go", class: "searchbar-go" %></div>
 <% end %>
 
 <% if @search_entries %>
-<table class="open-table">
-<tr>
-     <th>Name</th><th>Type</th><th>Last Updated</th><th>Creaated</th>
-</tr>
-<%= render partial: "search/search_entry", collection: @search_entries %>
-</table>
+     <% if @search_entries.empty? %>
+          <p>Sorry, Sherlock couldn't find anything that matched your query. Please try again.</p>
+     <% else %>
+          <table class="open-table">
+          <tr>
+               <th>Name</th><th>Type</th><th>Last Updated</th><th>Created</th>
+          </tr>
+          <%= render partial: "search/search_entry", collection: @search_entries %>
+          </table>
+     <% end %>
 <% end %>
