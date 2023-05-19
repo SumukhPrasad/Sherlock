@@ -3,5 +3,6 @@
 <h3><%= highlight search_entry.name, params[:query] %></h3>
 <% end %></td>
 <td><%= search_entry.searchable_type %></td>
-<td><%= search_entry.searchable %></td>
+<td><%= search_entry.searchable.updated_at %></td>
+<td><%= search_entry.searchable.created_at %></td>
 </tr>
