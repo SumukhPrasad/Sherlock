@@ -7,10 +7,14 @@
 <% end %>
 
 <% if @search_entries %>
-<table class="open-table">
-<tr>
-     <th>Name</th><th>Type</th><th>Last Updated</th><th>Creaated</th>
-</tr>
-<%= render partial: "search/search_entry", collection: @search_entries %>
-</table>
+     <% if @search_entries.empty? %>
+          <p>Sorry, Sherlock couldn't find anything that matched your query. Please try again.</p>
+     <% else %>
+          <table class="open-table">
+          <tr>
+               <th>Name</th><th>Type</th><th>Last Updated</th><th>Created</th>
+          </tr>
+          <%= render partial: "search/search_entry", collection: @search_entries %>
+          </table>
+     <% end %>
 <% end %>
